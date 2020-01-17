@@ -46,14 +46,14 @@ def implement_test_id(test_directory, test_id, custom_dimension):
 	control_file = build_directory + "control.js"
 	# store the variation_1.js file path in a variable
 	variation_file = build_directory + "variation_1.js"
-	variation_style_file = build_directory + "variation_1.scss"
+	variation_style_file = build_directory + "modules\\variation_1.scss"
 	# Call the open_and_update_file function on the control file
 	open_and_update_file(control_file, 'const test_id = "AWL"', 'const test_id = "%s"' % test_id)
 	open_and_update_file(control_file, 'const custom_dimension = "18"', 'const custom_dimension = "%s"' % custom_dimension)
 	# Call the open_and_update_file function on the variation_1 file
 	open_and_update_file(variation_file, 'const test_id = "AWL"', 'const test_id = "%s"' % test_id)
 	open_and_update_file(variation_file, 'const custom_dimension = "18"', 'const custom_dimension = "%s"' % custom_dimension)
-	open_and_update_file(variation_style_file, 'body {', '."%s"_loaded {' % test_id)
+	open_and_update_file(variation_style_file, 'body {', '.%s_loaded {' % test_id)
 
 def init():
 	print("Starting AB Test Generator")
@@ -64,7 +64,7 @@ def init():
 	test_directory = input("Where is the test directory? (leave blank for default location) ")
 
 	if test_directory == "":
-		test_directory = "..\\..\\Optimisation\\2019\\Tests\\"
+		test_directory = "..\\..\\Optimisation\\2020\\Tests\\"
 	else:
 		test_directory = test_directory + "\\"
 		test_directory = re.sub(r'\\\\$', '\\', test_directory)

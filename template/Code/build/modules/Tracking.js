@@ -1,4 +1,4 @@
-export default function ga_send_event(custom_dimension, test_id = "AWL000", variation = "Unassigned", event_action = "") {
+export default function ga_send_event(custom_dimension, test_id = "AWL000", variation = "Unassigned", event_action = "", impressionEvent = false) {
   let tracker_exists = !!ga.getByName(`${test_id}_cro_tracker`) || false
 
   if (!tracker_exists) {
@@ -16,7 +16,9 @@ export default function ga_send_event(custom_dimension, test_id = "AWL000", vari
     'nonInteraction': 1
   }
 
-  event_obj[`dimension${custom_dimension}`] =  `${test_id}: ${variation}`
+  if (impressionEvent) {
+    event_obj[`dimension${custom_dimension}`] =  `${test_id}: ${variation}`
+  }
 
   ga(`${test_id}_cro_tracker.send`, event_obj)
 }
