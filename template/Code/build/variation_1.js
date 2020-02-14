@@ -1,3 +1,4 @@
+import * as nbf from "./modules/nbf"
 import "./modules/variation_1.scss"
 import bc_log_event from "./modules/BcLog"
 import ga_send_event from "./modules/Tracking"
@@ -20,21 +21,4 @@ function conditions() {
   return typeof ga !== "undefined" && typeof $ !== "undefined";
 }
 
-function pollElements() {
-  bc_log_event("pollElements", "Poller Called")
-  let x = 0;
-
-  let waitForLoad = function waitForLoad() {
-    bc_log_event("pollElements", `Conditions Check: ${conditions()}`)
-    if (conditions()) {
-      init();
-    } else if (!conditions() && x < 10) {
-      x++;
-      window.setTimeout(waitForLoad, 5);
-    }
-  };
-
-  window.setTimeout(waitForLoad, 5);
-}
-
-pollElements();
+nbf.pollFor(conditions, init)
