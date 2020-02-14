@@ -1,4 +1,4 @@
-export default function mutation_observer(el_to_watch = "body", callback = _ => { console.count("Observer Fired")}) {
+export default function mutationObserver(el_to_watch = "body", callback = _ => { console.count("Observer Fired")}) {
   callback = callback
   // Select the node that will be observed for mutations
   var targetNode = document.querySelector(el_to_watch); // Options for the observer (which mutations to observe)
