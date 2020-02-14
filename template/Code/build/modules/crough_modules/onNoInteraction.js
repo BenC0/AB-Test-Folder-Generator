@@ -3,7 +3,7 @@
  * @param {function} callback - The function to run after no interaction
  * @param {function} [time=7000] - How long before calling the callback in milliseconds
 */
-function onNoInteraction(callback, time) {
+export default function onNoInteraction(callback, time) {
     var t,
         delay = time || 7000;
 

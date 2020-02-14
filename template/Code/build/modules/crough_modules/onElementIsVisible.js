@@ -1,10 +1,12 @@
+import debounce from "./debounce"
+
 /**
  * A trigger which runs a callback function based on whether an element on the page has been viewed by the user.
  * @param {string} elementToCheck - A CSS selector
  * @param {function} callback - The function to run when the elementToCheck has returned true
  * @param {string} [elementIndex] - If there are multiple of the same CSS selectors available on the page, specify the index number of the element you want to target
 */
-function onElementIsVisible(elementToCheck, callback, elementIndex) {
+export default function onElementIsVisible(elementToCheck, callback, elementIndex) {
     checkNumberOfElements();
     var trackedElement;
     var doneArray = [];
@@ -35,30 +37,6 @@ function onElementIsVisible(elementToCheck, callback, elementIndex) {
         }
 
         return top >= window.pageYOffset && left >= window.pageXOffset && top + height <= window.pageYOffset + window.innerHeight && left + width <= window.pageXOffset + window.innerWidth;
-    }
-
-    function debounce(func, wait, immediate) {
-        var timeout;
-        return function() {
-            var context = this,
-                args = arguments;
-
-            var later = function later() {
-                timeout = null;
-
-                if (!immediate) {
-                    func.apply(context, args);
-                }
-            };
-
-            var callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-
-            if (callNow) {
-                func.apply(context, args);
-            }
-        };
     }
 
     function elementChecker(element) {

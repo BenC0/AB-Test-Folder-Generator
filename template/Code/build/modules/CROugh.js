@@ -8,18 +8,20 @@ import onElementIsVisible from "./crough_modules/onElementIsVisible"
 import gaSendEvent from "./crough_modules/gaSendEvent"
 import croLog from "./crough_modules/croLog"
 import mutationObserver from "./crough_modules/mutationObserver"
+import debounce from "./crough_modules/debounce"
 
 const cro = {
+	"croLog": croLog,
+	"pollFor": pollFor,
+	"debounce": debounce,
 	"isString": isString,
 	"isFunction": isFunction,
-	"elementExists": elementExists,
-	"pollFor": pollFor,
-	"onMouseLeave": onMouseLeave,
-	"onNoInteraction": onNoInteraction,
-	"onElementIsVisible": onElementIsVisible,
 	"gaSendEvent": gaSendEvent,
-	"croLog": croLog,
+	"onMouseLeave": onMouseLeave,
+	"elementExists": elementExists,
+	"onNoInteraction": onNoInteraction,
 	"mutationObserver": mutationObserver,
+	"onElementIsVisible": onElementIsVisible,
 }
 
 export default cro

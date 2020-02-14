@@ -1,6 +1,8 @@
 import cro from "./modules/CROugh"
 import "./modules/variation_1.scss"
 
+console.log(`cro: `, cro)
+
 const test_id = "AWL"
 const variation = "Variation 1"
 const custom_dimension = "18"
